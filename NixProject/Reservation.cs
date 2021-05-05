@@ -9,7 +9,6 @@ namespace NixProject
     class Reservation
     {
         public Room Room { get; set; }
-        public IEnumerable<Guest> Guests { get; set; }
         private DateTime startDate;
         private DateTime endDate;
         public ReservationStatus Status { get; set; }
@@ -40,15 +39,12 @@ namespace NixProject
             }
         }
 
-        public Reservation(Room room, DateTime startDate, DateTime endDate, params Guest[] guests)
+        public Reservation(Room room, DateTime startDate, DateTime endDate)
         {
-            if (guests.Length > room.Capacity)
-                throw new ArgumentOutOfRangeException("Number of guests is more then capacity of the room.");
-
             this.Room = room;
             this.StartDate = startDate;
             this.EndDate = endDate;
-            this.Guests = guests;
+            this.Status = ReservationStatus.Waiting;
         }
     }
 }

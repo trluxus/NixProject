@@ -6,10 +6,9 @@ namespace NixProject
     class Program
     {
         
-
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Select action:\n\t1. Add room.\n\t 2. Add guest");
         }
     }
 }
