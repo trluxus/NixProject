@@ -8,7 +8,8 @@ namespace NixProject
 {
     class Reservation
     {
-        public Room Room { get; set; }
+        public int ID { get; set; }
+        public int RoomNumber { get; set; }
         private DateTime startDate;
         private DateTime endDate;
         public ReservationStatus Status { get; set; }
@@ -39,12 +40,24 @@ namespace NixProject
             }
         }
 
-        public Reservation(Room room, DateTime startDate, DateTime endDate)
+        public Reservation(int id, int roomNumber, DateTime startDate, DateTime endDate)
         {
-            this.Room = room;
+            this.ID = id;
+            this.RoomNumber = roomNumber;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.Status = ReservationStatus.Waiting;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Reservation reservation &&
+                   ID == reservation.ID;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(ID);
         }
     }
 }

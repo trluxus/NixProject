@@ -8,6 +8,7 @@ namespace NixProject
 {
     class Guest
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Patronymic { get; set; }
@@ -17,14 +18,12 @@ namespace NixProject
         public override bool Equals(object obj)
         {
             return obj is Guest guest &&
-                   Name == guest.Name &&
-                   Surname == guest.Surname &&
-                   Patronymic == guest.Patronymic;
+                   ID == guest.ID;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Surname, Patronymic);
+            return HashCode.Combine(ID);
         }
     }
 }

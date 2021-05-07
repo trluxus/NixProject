@@ -11,6 +11,7 @@ namespace NixProject
         public int Number { get; set; }
         public decimal Price { get; set; }
         public int Capacity { get; set; }
+        public string Type { get; set; }
 
         public override bool Equals(object obj)
         {
